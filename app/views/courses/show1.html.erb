@@ -1,0 +1,5 @@
+<h1>Courses#show1</h1>
+<% @courses.each do |s| %>
+	<%= link_to s.name, "/courses/" + s.id.to_s %>
+	<br>
+<% end %>

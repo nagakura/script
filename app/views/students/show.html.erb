@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @student.name %>
+</p>
+
+<p>
+  <b>Faculty:</b>
+  <%= @student.faculty.name %>
+</p>
+
+<p>
+	<b>Grade:</b>
+	<%= @student.grade %>
+</p>
+
+<p>
+	<b>Picture:</b>
+	<% if @student.picture_data then %>
+		<%= image_tag picture_student_path(@student), :height => '64' %>
+	<% else %>
+		No Image
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

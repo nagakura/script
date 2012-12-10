@@ -1,0 +1,15 @@
+<h1>Courses#show</h1>
+<p>name:
+	<%= @course.name %></p>
+<p>credit: 
+	<%= @course.credit %></p>
+<p>programming:
+	<%= @course.programming %></p>
+<% if !@filename then %>
+	<%= link_to "download", :action => :download %>
+<% else %>
+<%= form_tag({:action => :document}, {:multipart => true}) do %>
+	<%= file_field_tag "document"%>
+	<%= submit_tag("upload") %>
+<% end %>
+<% end %>
