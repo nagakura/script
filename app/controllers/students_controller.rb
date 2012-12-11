@@ -85,4 +85,15 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		send_data(@student.picture_data, :type => @student.content_type)
 	end
+
+	#GET /students/search
+	def search
+	end
+	
+	#POST /students/search
+	def result
+		@students = Student.joins(:scores).where 'course_id = ? AND score = ?', params[:course], params[:score]
+		render :index
+	end
+
 end

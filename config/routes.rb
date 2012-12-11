@@ -1,4 +1,23 @@
 School::Application.routes.draw do
+  resources :scores
+
+	resources :students do
+		collection do
+			get :search
+			post :search, :action => :result
+		end
+		member do
+			get :picture
+		end
+	end
+	
+	resources :courses do
+		collection  do
+			get :search
+			post :search, :action => :result
+		end
+	end
+
 	resources :courses, :only => [:show]
 	#match "courses/:id" => "courses#show"
 	match "courses" => "courses#show1" 
@@ -15,6 +34,7 @@ School::Application.routes.draw do
 		end
 	end
 
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

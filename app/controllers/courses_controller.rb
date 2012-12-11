@@ -17,5 +17,20 @@ class CoursesController < ApplicationController
 		send_file("public/uploads/#{@filename}")
 	end
 	
+	#GET /students/search
+	def search
+	end
+	
+	#POST /students/search
+	def result
+		@courses = []
+		Course.all.each do |course|
+			if course.scores.length >= params[:many].to_i then
+				@courses.push(course)
+			end	
+		end
+		render :show1
+	end
+	
 
 end
